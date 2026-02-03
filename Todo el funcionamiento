@@ -1,0 +1,65 @@
+let products = JSON.parse(localStorage.getItem("products")) || [];
+
+// GUARDAR PRODUCTO
+const form = document.getElementById("productForm");
+if (form) {
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+
+    const product = {
+      id: Date.now(),
+      name: name.value,
+      price: price.value,
+      category: category.value.toLowerCase(),
+      size: size.value,
+      image: image.value,
+      description: description.value
+    };
+
+    products.push(product);
+    localStorage.setItem("products", JSON.stringify(products));
+    alert("Producto guardado ✔");
+    form.reset();
+  });
+}
+
+// MOSTRAR PRODUCTOS
+const list = document.getElementById("productList");
+const search = document.getElementById("search");
+const filter = document.getElementById("filter");
+
+function render(data) {
+  if (!list) return;
+  list.innerHTML = "";
+  data.forEach(p => {
+    list.innerHTML += `
+      <div class="card">
+        <img src="${p.image}">
+        <h3>${p.name}</h3>
+        <p>$${p.price}</p>
+        <p>Talla: ${p.size}</p>
+        <button onclick="contact('${p.name}')">WhatsApp</button>
+      </div>
+    `;
+  });
+}
+
+function contact(product) {
+  const phone = "5491112345678"; // 👈 TU WHATSAPP
+  const msg = `Hola! Estoy interesado en: ${product}`;
+  window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`);
+}
+
+if (list) {
+  render(products);
+
+  search.addEventListener("input", () => {
+    const value = search.value.toLowerCase();
+    render(products.filter(p => p.name.toLowerCase().includes(value)));
+  });
+
+  filter.addEventListener("change", () => {
+    const value = filter.value;
+    render(value ? products.filter(p => p.category === value) : products);
+  });
+}
