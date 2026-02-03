@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Marketplace de Ropa</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>🛒 Marketplace de Ropa</h1>
+  <input type="text" id="search" placeholder="Buscar...">
+  <select id="filter">
+    <option value="">Todas</option>
+    <option value="camisas">Camisas</option>
+    <option value="pantalones">Pantalones</option>
+    <option value="vestidos">Vestidos</option>
+  </select>
+</header>
+
+<main id="productList"></main>
+
+<script src="app.js"></script>
+</body>
+</html>
