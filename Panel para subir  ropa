@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Panel Admin</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>📦 Panel Admin</h2>
+<button onclick="logout()">Cerrar sesión</button>
+
+<form id="productForm">
+  <input type="text" id="name" placeholder="Nombre" required>
+  <input type="number" id="price" placeholder="Precio" required>
+  <input type="text" id="category" placeholder="Categoría (camisas, vestidos…)" required>
+  <input type="text" id="size" placeholder="Talla">
+  <input type="text" id="image" placeholder="URL Imagen" required>
+  <textarea id="description" placeholder="Descripción"></textarea>
+  <button type="submit">Guardar producto</button>
+</form>
+
+<script src="app.js"></script>
+<script>
+  if (!localStorage.getItem("admin")) {
+    window.location.href = "login.html";
+  }
+
+  function logout() {
+    localStorage.removeItem("admin");
+    window.location.href = "login.html";
+  }
+</script>
+
+</body>
+</html>
