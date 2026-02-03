@@ -1,0 +1,6 @@
+/marketplace-ropa
+│── index.html        (clientes)
+│── login.html        (login admin)
+│── admin.html        (panel admin)
+│── style.css
+│── app.js
