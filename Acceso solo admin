@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Admin</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>🔐 Acceso Admin</h2>
+
+<form id="loginForm">
+  <input type="text" id="user" placeholder="Usuario" required>
+  <input type="password" id="pass" placeholder="Contraseña" required>
+  <button type="submit">Entrar</button>
+</form>
+
+<script>
+  document.getElementById("loginForm").addEventListener("submit", e => {
+    e.preventDefault();
+
+    const user = document.getElementById("user").value;
+    const pass = document.getElementById("pass").value;
+
+    if (user === "admin" && pass === "1234") {
+      localStorage.setItem("admin", "true");
+      window.location.href = "admin.html";
+    } else {
+      alert("Datos incorrectos");
+    }
+  });
+</script>
+
+</body>
+</html>
